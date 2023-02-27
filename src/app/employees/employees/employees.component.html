@@ -1,0 +1,43 @@
+<mat-toolbar class="toolbar" color="primary">
+  <span>Project On</span>
+
+  <div>
+    <button mat-icon-button aria-label="Sign out of account" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-card class="card-employee">
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. name of the person" #input>
+  </mat-form-field>
+
+
+  <mat-toolbar class="toolbar" color="primary">
+    Employees List
+    <button mat-raised-button aria-label="Add an Employee" (click)="onAdd()" class="action-column-header">
+      <mat-icon>add</mat-icon> Employee
+    </button>
+  </mat-toolbar>
+
+  <div class="container-flex mat-elevation-z8" tabindex="0">
+
+    <app-employees-list *ngIf="employees$ | async as employees; else loading;"
+      [employees]="employees"
+      (add)="onAdd()"
+      (edit)="onEdit($event)"
+      (remove)="onRemove($event)">
+    </app-employees-list>
+
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+
+  </div>
+
+</mat-card>

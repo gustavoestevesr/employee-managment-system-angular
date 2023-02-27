@@ -1,0 +1,19 @@
+.login-card {
+  width: 450px;
+  margin: 2em auto;
+  padding: 1em;
+}
+
+.actions-card {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.msg-error {
+  margin-bottom: 20px;
+}

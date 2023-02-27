@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <span>Project On</span>
+</mat-toolbar>
+
+<mat-card class="login-card">
+
+  <mat-toolbar color="primary">Login Screen</mat-toolbar>
+
+  <mat-card-header></mat-card-header>
+
+  <form [formGroup]="formLogin">
+
+    <mat-card-content class="login-content">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="username" formControlName="username" autofocus>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formLogin.get('username')?.hasError('required') && formLogin.get('username')?.touched">
+        Username is <strong>required</strong>
+      </mat-error>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="*********" formControlName="password">
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">Password is
+        <strong>required</strong>
+      </mat-error>
+    </mat-card-content>
+
+  </form>
+
+  <mat-card-actions class="actions-card">
+    <button mat-raised-button color="primary" (click)="onLogin()" [disabled]="!formLogin.valid">LOGIN</button>
+
+    <button mat-raised-button (click)="onRegister()">REGISTER</button>
+  </mat-card-actions>
+
+</mat-card>

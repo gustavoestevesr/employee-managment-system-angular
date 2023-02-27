@@ -1,0 +1,92 @@
+<mat-table [dataSource]="employees">
+  <!-- Photo Column -->
+  <ng-container matColumnDef="photo">
+    <mat-header-cell class="column-8" *matHeaderCellDef> Photo </mat-header-cell>
+    <mat-cell class="column-8" *matCellDef="let employee">
+      <img class="avatar" mat-card-image src="{{employee.photo}}">
+    </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell class="column-20" *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell class="column-20" *matCellDef="let employee"> {{employee.name}} </mat-cell>
+  </ng-container>
+
+  <!-- EMAIL Column -->
+  <ng-container matColumnDef="email">
+    <mat-header-cell class="column-20" *matHeaderCellDef> EMAIL </mat-header-cell>
+    <mat-cell class="column-20" *matCellDef="let employee"> {{employee.email}} </mat-cell>
+  </ng-container>
+
+  <!-- CPF Column -->
+  <ng-container matColumnDef="cpf">
+    <mat-header-cell class="column-11" *matHeaderCellDef> CPF </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee"> {{employee.cpf}} </mat-cell>
+  </ng-container>
+
+  <!-- ZIP CODE Column -->
+  <ng-container matColumnDef="zip_code">
+    <mat-header-cell class="column-11" *matHeaderCellDef> ZIP CODE </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee"> {{employee.address.zip_code}} </mat-cell>
+  </ng-container>
+
+  <!-- Neighborhood Column -->
+  <ng-container matColumnDef="neighborhood">
+    <mat-header-cell class="column-15" *matHeaderCellDef> Neighborhood </mat-header-cell>
+    <mat-cell class="column-15" *matCellDef="let employee"> {{employee.address.neighborhood}} </mat-cell>
+  </ng-container>
+
+  <!-- Street Column -->
+  <ng-container matColumnDef="street">
+    <mat-header-cell class="column-15" *matHeaderCellDef> Street </mat-header-cell>
+    <mat-cell class="column-15" *matCellDef="let employee"> {{employee.address.street}} </mat-cell>
+  </ng-container>
+
+  <!-- City Column -->
+  <ng-container matColumnDef="city">
+    <mat-header-cell class="column-11" *matHeaderCellDef> City </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee"> {{employee.address.city}} </mat-cell>
+  </ng-container>
+
+  <!-- State Column -->
+  <ng-container matColumnDef="state">
+    <mat-header-cell class="column-11" *matHeaderCellDef> State </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee"> {{employee.address.state}} </mat-cell>
+  </ng-container>
+
+  <!-- Active Column -->
+  <ng-container matColumnDef="active">
+    <mat-header-cell class="column-7" *matHeaderCellDef> Active </mat-header-cell>
+    <mat-cell class="column-7" *matCellDef="let employee">
+
+      <mat-icon aria-hidden="false" aria-label="Active icon for Employee"
+        fontIcon="{{employee.active | active }}"></mat-icon>
+
+    </mat-cell>
+  </ng-container>
+
+  <!-- Hiring Date Column -->
+  <ng-container matColumnDef="hiringDate">
+    <mat-header-cell class="column-11" *matHeaderCellDef> Hiring Date </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee"> {{employee.hiringDate}} </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell class="column-11" *matHeaderCellDef> Actions </mat-header-cell>
+    <mat-cell class="column-11" *matCellDef="let employee">
+      <button mat-icon-button color="primary" aria-label="Edit Employee" (click)="onEdit(employee)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Delete Employee" (click)="onDelete(employee)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+</mat-table>

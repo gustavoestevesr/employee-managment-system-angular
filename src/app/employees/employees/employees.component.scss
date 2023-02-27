@@ -1,0 +1,24 @@
+.card-employee {
+  width: 100%;
+  margin: 2em auto;
+  padding: 1em;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loading-spinner {
+  background: rgba(0, 0, 0, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15vh;
+}
+
+.container-flex {
+  height: 400px;
+  width: 100%;
+  overflow: auto;
+}

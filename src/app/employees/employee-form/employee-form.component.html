@@ -1,0 +1,111 @@
+<mat-toolbar color="primary">
+  <span>Project On</span>
+</mat-toolbar>
+
+<mat-card class="card-form-employee">
+
+  <mat-toolbar color="primary">Employee Registration</mat-toolbar>
+
+  <mat-card-header></mat-card-header>
+
+  <form [formGroup]="formEmployee">
+
+    <mat-card-content class="content-form-employee">
+    <mat-form-field appearance="outline">
+      <mat-label>Full Name</mat-label>
+      <input matInput placeholder="Full Name" formControlName="name" autofocus>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('name')?.hasError('required') && formEmployee.get('name')?.touched">
+      Full Name is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="user@email.com" formControlName="email">
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('email')?.hasError('email') && formEmployee.get('email')?.touched">
+      Please provide a <strong>valid email</strong>
+    </mat-error>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('email')?.hasError('required') && formEmployee.get('email')?.touched">
+      Email is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input matInput placeholder="XXX.XXX.XXX-XX" formControlName="cpf">
+      <mat-icon matSuffix>account_balance_wallet</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('cpf')?.hasError('required') && formEmployee.get('cpf')?.touched">
+      CPF is <strong>required</strong>
+    </mat-error>
+
+    <div class="photo">
+      <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">Upload Photo Employee</button>
+      <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+      <span class="file-name">{{selectedFile?.name}}</span>
+    </div>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('foto')?.hasError('required') && formEmployee.get('foto')?.touched">
+      Photo is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Zip Code</mat-label>
+      <input matInput placeholder="XX.XXX-XXX" formControlName="zip_code">
+      <mat-icon matSuffix>location_city</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('zip_code')?.hasError('required') && formEmployee.get('zip_code')?.touched">
+      Zip Code is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Neighborhood</mat-label>
+      <input matInput placeholder="neighborhood" formControlName="neighborhood">
+      <mat-icon matSuffix>location_city</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('neighborhood')?.hasError('required') && formEmployee.get('neighborhood')?.touched">
+      Neighborhood is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Street</mat-label>
+      <input matInput placeholder="street" formControlName="street">
+      <mat-icon matSuffix>location_city</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('street')?.hasError('required') && formEmployee.get('street')?.touched">
+      Street is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state">
+        <mat-option value="state*" disabled></mat-option>
+        <mat-option *ngFor="let state of estadosBrasileiros" [value]="state">
+          {{state}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('state')?.hasError('required') && formEmployee.get('state')?.touched">
+      State is <strong>required</strong>
+    </mat-error>
+
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="city" formControlName="city">
+      <mat-icon matSuffix>location_city</mat-icon>
+    </mat-form-field>
+    <mat-error class="msg-error" *ngIf="formEmployee.get('city')?.hasError('required') && formEmployee.get('city')?.touched">
+      City is <strong>required</strong>
+    </mat-error>
+
+  </mat-card-content>
+
+  </form>
+
+  <mat-card-actions class="actions-card">
+    <button mat-raised-button color="primary" (click)="onSubmit()">SAVE</button>
+    <button mat-raised-button (click)="onCancel()">CANCEL</button>
+  </mat-card-actions>
+
+</mat-card>
