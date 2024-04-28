@@ -50,62 +50,64 @@
       Photo is <strong>required</strong>
     </mat-error>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Zip Code</mat-label>
-      <input matInput placeholder="XX.XXX-XXX" formControlName="zip_code">
-      <mat-icon matSuffix>location_city</mat-icon>
-    </mat-form-field>
-    <mat-error class="msg-error" *ngIf="formEmployee.get('zip_code')?.hasError('required') && formEmployee.get('zip_code')?.touched">
-      Zip Code is <strong>required</strong>
-    </mat-error>
+    <div formGroupName="address" class="address-formGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Zip Code</mat-label>
+        <input matInput placeholder="XX.XXX-XXX" formControlName="zip_code">
+        <mat-icon matSuffix>location_city</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formEmployee.get('zip_code')?.hasError('required') && formEmployee.get('zip_code')?.touched">
+        Zip Code is <strong>required</strong>
+      </mat-error>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Neighborhood</mat-label>
-      <input matInput placeholder="neighborhood" formControlName="neighborhood">
-      <mat-icon matSuffix>location_city</mat-icon>
-    </mat-form-field>
-    <mat-error class="msg-error" *ngIf="formEmployee.get('neighborhood')?.hasError('required') && formEmployee.get('neighborhood')?.touched">
-      Neighborhood is <strong>required</strong>
-    </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>Neighborhood</mat-label>
+        <input matInput placeholder="neighborhood" formControlName="neighborhood">
+        <mat-icon matSuffix>location_city</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formEmployee.get('neighborhood')?.hasError('required') && formEmployee.get('neighborhood')?.touched">
+        Neighborhood is <strong>required</strong>
+      </mat-error>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Street</mat-label>
-      <input matInput placeholder="street" formControlName="street">
-      <mat-icon matSuffix>location_city</mat-icon>
-    </mat-form-field>
-    <mat-error class="msg-error" *ngIf="formEmployee.get('street')?.hasError('required') && formEmployee.get('street')?.touched">
-      Street is <strong>required</strong>
-    </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput placeholder="street" formControlName="street">
+        <mat-icon matSuffix>location_city</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formEmployee.get('street')?.hasError('required') && formEmployee.get('street')?.touched">
+        Street is <strong>required</strong>
+      </mat-error>
 
-    <mat-form-field appearance="outline">
-      <mat-label>State</mat-label>
-      <mat-select formControlName="state">
-        <mat-option value="state*" disabled></mat-option>
-        <mat-option *ngFor="let state of estadosBrasileiros" [value]="state">
-          {{state}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-error class="msg-error" *ngIf="formEmployee.get('state')?.hasError('required') && formEmployee.get('state')?.touched">
-      State is <strong>required</strong>
-    </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select formControlName="state">
+          <mat-option value="state*" disabled></mat-option>
+          <mat-option *ngFor="let state of estadosBrasileiros" [value]="state">
+            {{state}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formEmployee.get('state')?.hasError('required') && formEmployee.get('state')?.touched">
+        State is <strong>required</strong>
+      </mat-error>
 
-    <mat-form-field appearance="outline">
-      <mat-label>City</mat-label>
-      <input matInput placeholder="city" formControlName="city">
-      <mat-icon matSuffix>location_city</mat-icon>
-    </mat-form-field>
-    <mat-error class="msg-error" *ngIf="formEmployee.get('city')?.hasError('required') && formEmployee.get('city')?.touched">
-      City is <strong>required</strong>
-    </mat-error>
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="city" formControlName="city">
+        <mat-icon matSuffix>location_city</mat-icon>
+      </mat-form-field>
+      <mat-error class="msg-error" *ngIf="formEmployee.get('city')?.hasError('required') && formEmployee.get('city')?.touched">
+        City is <strong>required</strong>
+      </mat-error>
+    </div>
 
   </mat-card-content>
 
   </form>
 
   <mat-card-actions class="actions-card">
-    <button mat-raised-button color="primary" (click)="onSubmit()">SAVE</button>
     <button mat-raised-button (click)="onCancel()">CANCEL</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">SAVE</button>
   </mat-card-actions>
 
 </mat-card>

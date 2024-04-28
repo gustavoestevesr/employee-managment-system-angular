@@ -4,7 +4,8 @@
   padding: 1em;
 }
 
-.content-form-employee {
+.content-form-employee,
+.address-formGroup {
   display: flex;
   flex-direction: column;
 }
@@ -29,5 +30,6 @@
 
 .actions-card {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 1rem;
 }

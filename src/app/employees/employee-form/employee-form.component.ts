@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Employee } from '../model/employee';
 import { EmployeesService } from './../services/employees.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-employee-form',
@@ -18,14 +19,17 @@ export class EmployeeFormComponent implements OnInit {
   ];
 
   formEmployee = this.formBuilder.group({
+    id: [''],
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     cpf: ['', [Validators.required]],
-    zip_code: ['', [Validators.required]],
-    street: ['', [Validators.required]],
-    neighborhood: ['', [Validators.required]],
-    state: ['', [Validators.required]],
-    city: ['', [Validators.required]],
+    address: this.formBuilder.group({
+      zip_code: ['', [Validators.required]],
+      street: ['', [Validators.required]],
+      neighborhood: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+    }),
   });
 
   constructor(
@@ -38,17 +42,24 @@ export class EmployeeFormComponent implements OnInit {
 
   // Código seta os valores no formulário ao editar, porém precisa do back-end
   ngOnInit(): void {
-    const employee: Employee = this.route.snapshot.data['employee'];
-    this.formEmployee.setValue({
-      name: employee.name,
-      email: employee.email,
-      cpf: employee.cpf,
-      zip_code: employee.address.zip_code,
-      street: employee.address.street,
-      neighborhood: employee.address.neighborhood,
-      state: employee.address.state,
-      city: employee.address.city,
-    });
+    const employeeID = this.route.snapshot.params['id'];
+    if(employeeID) {
+      this.service.loadByCPF(employeeID).pipe(first()).subscribe((employee) => {
+        this.formEmployee.setValue({
+          id: employee.id,
+          name: employee.name,
+          email: employee.email,
+          cpf: employee.cpf,
+          address: {
+            zip_code: employee.address.zip_code,
+            street: employee.address.street,
+            neighborhood: employee.address.neighborhood,
+            state: employee.address.state,
+            city: employee.address.city,
+          }
+        });
+      })
+    }
   }
 
   onCancel() {
@@ -56,7 +67,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.formEmployee.value).subscribe({
+    this.service.save(this.formEmployee.getRawValue()).subscribe({
       next: () => {
         this.onSuccess();
       },
