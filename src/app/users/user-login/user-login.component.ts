@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsersService } from './../services/users.service';
 
 @Component({
@@ -18,7 +18,6 @@ export class UserLoginComponent {
     private service: UsersService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private route: ActivatedRoute
   ) {
     this.formLogin = this.formBuilder.group({
       username: ['', [Validators.required]],
@@ -30,7 +29,7 @@ export class UserLoginComponent {
 
   onLogin() {
     if (this.formLogin.valid) {
-      this.service.login(this.formLogin.value).subscribe({
+      this.service.login(this.formLogin.getRawValue()).subscribe({
         next: () => {
           this.onSuccess();
         },
