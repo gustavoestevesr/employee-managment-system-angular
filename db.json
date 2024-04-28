@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "username": "adm",
+      "password": "adm"
+    }
+  ],
+  "employees": [
+    {
+      "id": "0f3c",
+      "photo": "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "name": "Yasmim Maria",
+      "email": "yasmim.maria@email.com",
+      "cpf": "111.222.333-44",
+      "address": {
+        "zip_code": "22.999-333",
+        "street": "R. General Ozório",
+        "neighborhood": "Orquídeas",
+        "state": "São Paulo",
+        "city": "São Paulo"
+      }
+    },
+    {
+      "id": "6f83",
+      "name": "Gustavo Esteves",
+      "email": "gusgusgus@gmail.com",
+      "cpf": "123123123123",
+      "address": {
+        "zip_code": "22.999-333",
+        "street": "R. General Ozório",
+        "neighborhood": "Orquídeas",
+        "state": "São Paulo",
+        "city": "São Paulo"
+      }
+    },
+    {
+      "id": "d008",
+      "name": "Yasmim Maria",
+      "email": "yasmim.maria@email.com",
+      "cpf": "111.222.333-44",
+      "address": {
+        "zip_code": "22.999-333",
+        "street": "R. General Ozório",
+        "neighborhood": "Orquídeas",
+        "state": "São Paulo (SP)",
+        "city": "São Paulo"
+      }
+    },
+    {
+      "id": "a7e3",
+      "name": "Gustavo Rocha",
+      "email": "gusgusgus@gmail.com",
+      "cpf": "123123123123",
+      "address": {
+        "zip_code": "22.999-333",
+        "street": "R. General Ozório",
+        "neighborhood": "Orquídeas",
+        "state": "Amapá (AP)",
+        "city": "São Paulo"
+      }
+    },
+    {
+      "id": "c7ce",
+      "name": "Gustavo Esteves",
+      "email": "gusgusgus@gmail.com",
+      "cpf": "123123123123",
+      "address": {
+        "zip_code": "22.999-333",
+        "street": "R. General Ozório",
+        "neighborhood": "Orquídeas",
+        "state": "Amapá (AP)",
+        "city": "São Paulo"
+      }
+    }
+  ]
+}
