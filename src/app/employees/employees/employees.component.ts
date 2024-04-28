@@ -6,7 +6,7 @@ import { EmployeesService } from './../services/employees.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, filter, Observable, of } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
 
 /**
@@ -43,7 +43,6 @@ export class EmployeesComponent {
 
   }
 
-
   onLogout() {
     localStorage.clear();
     this.router.navigate(['login']);
@@ -69,17 +68,17 @@ export class EmployeesComponent {
   }
 
   onEdit(employee: Employee) {
-    this.router.navigate(['edit', employee.cpf], { relativeTo: this.route });
+    this.router.navigate(['edit', employee.id], { relativeTo: this.route });
   }
 
   onRemove(employee: Employee) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      data: 'Tem certeza que deseja remover esse curso?',
+      data: 'Tem certeza que deseja remover esse colaborador?',
     });
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.employeesService.remove(employee.cpf).subscribe(
+        this.employeesService.remove(employee.id).subscribe(
           () => {
             this.refresh();
             this.snackBar.open('Colaborador removido com sucesso!', 'X', {
@@ -88,7 +87,7 @@ export class EmployeesComponent {
               horizontalPosition: 'center'
             });
           },
-          () => this.onError('Erro ao tentar remover Colaborador.')
+          () => this.onError('Erro ao tentar remover colaborador.')
         );
       }
     });
