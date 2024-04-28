@@ -10,11 +10,12 @@
 
 <mat-card class="card-employee">
 
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. name of the person" #input>
-  </mat-form-field>
-
+  <div class="filter-container">
+    <mat-form-field appearance="outline" class="filter-input">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. name of the person" #input>
+    </mat-form-field>
+  </div>
 
   <mat-toolbar class="toolbar" color="primary">
     Employees List
