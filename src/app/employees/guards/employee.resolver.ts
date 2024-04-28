@@ -22,6 +22,7 @@ export class EmployeeResolver implements Resolve<Employee> {
         return this.service.loadByCPF(route.params['cpf']);
       }
       return of({
+        id: '',
         name: '',
         cpf: '',
         photo: '',
