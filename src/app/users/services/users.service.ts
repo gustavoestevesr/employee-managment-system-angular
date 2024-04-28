@@ -7,12 +7,12 @@ import { User } from './../model/user';
   providedIn: 'root',
 })
 export class UsersService {
-  private readonly API = '/assets/users.json';
+  private readonly API = 'http://localhost:3000/users';
   // private readonly API = '/assets/asdusers.jpg' // testar tratamento de erro
 
   constructor(private httpClient: HttpClient) {}
 
-  login(user :User) {
+  login(user: User) {
     localStorage.setItem('token', "TokenQueSeriaGeradoPelaAPI" );
     localStorage.setItem('user', "objetoUsuárioRetornadoPelaAPI" );
 
