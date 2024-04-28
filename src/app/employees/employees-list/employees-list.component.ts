@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Employee } from './../model/employee';
-import { EmployeesService } from './../services/employees.service';
 
 @Component({
   selector: 'app-employees-list',
@@ -16,7 +15,7 @@ export class EmployeesListComponent {
 
   readonly displayedColumns: string[] = ['photo', 'name', 'email', 'cpf', 'zip_code', 'neighborhood', 'street', 'city', 'state', 'active', 'hiringDate', 'actions'];
 
-  constructor(private employeeService: EmployeesService){}
+  constructor(){}
 
   onAdd() {
     this.add.emit(true);
